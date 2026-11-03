@@ -1,0 +1,25 @@
+name: ViCheck Node API checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - server.js
+      - test/**
+      - package.json
+      - .github/workflows/vicheck-node.yml
+  pull_request:
+    paths:
+      - server.js
+      - test/**
+      - package.json
+      - .github/workflows/vicheck-node.yml
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: node --check server.js
