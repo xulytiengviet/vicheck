@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08121e">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="ViCheck | Website Risk Intelligence: quét thụ động từ URL, rà soát rủi ro pháp lý và các tín hiệu cấu hình an toàn thông tin.">
+<title>ViCheck | Website Risk Intelligence</title>
+<style>
+:root{--bg:#060e19;--surface:#0d1a28;--surface2:#102133;--stroke:#24384c;--text:#eaf5fe;--dim:#9cb6ca;--muted:#728da5;--green:#4be0aa;--yellow:#f6c863;--red:#ff7687;--blue:#64b9ff;--neutral:#9aabbc;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse 85% 560px at 48% -210px,#10404c 0%,transparent 90%),var(--bg);color:var(--text);font:14px/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}body:before{content:"";position:fixed;pointer-events:none;inset:0;z-index:-1;background-image:linear-gradient(#4b6b7910 1px,transparent 1px),linear-gradient(90deg,#4b6b7910 1px,transparent 1px);background-size:43px 43px}
+a{color:#92d1ff;text-underline-offset:3px}a:hover{color:#c4e8ff}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.wrap{width:min(1190px,calc(100% - 42px));margin:auto}
+header{height:73px;position:sticky;top:0;z-index:10;background:#091521e7;border-bottom:1px solid #2641538c;backdrop-filter:blur(16px)}.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--text);text-decoration:none;font-size:21px;font-weight:850;letter-spacing:-.6px}.brand .mark{width:41px;height:41px;display:grid;place-items:center;background:#12372f;color:var(--green);border:1px solid #286753;border-radius:12px;font-size:23px;box-shadow:0 0 30px #40dcac15}
+.brand small{display:block;color:#7db5bc;letter-spacing:2.3px;font:700 9px ui-monospace,SFMono-Regular,Consolas,monospace;line-height:1.4}
+.nav-right{display:flex;align-items:center;gap:25px}.nav-right a{font-size:12px;text-decoration:none;color:#a8bfd2}.nav-right a:hover{color:#fff}
+.live{display:inline-flex;align-items:center;gap:8px;border:1px solid #286450;background:#0e2b2b;border-radius:100px;color:#91eacc;font:800 10px ui-monospace,monospace;letter-spacing:1px;padding:7px 12px;white-space:nowrap}.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+.hero{padding:74px 0 47px;position:relative}.overline{font:800 11px ui-monospace,Consolas,monospace;letter-spacing:2.5px;text-transform:uppercase;color:#78d8d0;margin:0 0 16px}
+h1{font-size:clamp(35px,5.15vw,65px);line-height:1.12;letter-spacing:-2.9px;margin:0;font-weight:870;max-width:930px}
+h1 span{background:linear-gradient(110deg,#7cffc9,#69b8fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.subhead{max-width:780px;color:var(--dim);font-size:16px;line-height:1.85;margin:22px 0 30px}
+.scan-panel{padding:23px;background:linear-gradient(125deg,#102333,#0e1b29);border:1px solid #365269;border-radius:19px;max-width:970px;box-shadow:0 27px 62px #0006,0 0 0 5px #1a334140}
+.field-label{font:750 11px ui-monospace,monospace;letter-spacing:1.4px;color:#a6c7d5;text-transform:uppercase;display:block;margin-bottom:12px}
+.form-row{display:flex;gap:11px}.url-wrap{flex:1;position:relative}.url-wrap:before{content:"◎";position:absolute;top:50%;left:17px;transform:translateY(-50%);font-size:21px;color:#8eb3c7}
+input[type=url],input[type=text]{width:100%;height:58px;padding:0 16px 0 48px;border:1px solid #3a5771;border-radius:11px;background:#071623;color:#eef9ff;outline:none;min-width:0}
+input:focus{border-color:#79bdec!important;box-shadow:0 0 0 3px #347db837}input::placeholder{color:#66839b}
+.primary{background:linear-gradient(108deg,#5ce7af,#44cde1);color:#073038;border:0;border-radius:11px;padding:0 24px;min-width:168px;font-weight:850;white-space:nowrap}.primary:hover:not(:disabled){filter:brightness(1.06)}
+.smallrow{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;margin-top:15px;font-size:12px;color:#91acbd}.btn-link{border:0;background:none;padding:0;color:#90d8ff;text-decoration:underline;text-underline-offset:3px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}.tags span{font:11px ui-monospace,monospace;color:#87aabc;border:1px solid #294459;border-radius:30px;padding:6px 10px;background:#0e1d29}
+.section-top{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:20px 0 17px}.eyebrow{font:750 10px ui-monospace,monospace;color:#7893a9;letter-spacing:1.5px;text-transform:uppercase}.section-top h2{font-size:22px;letter-spacing:-.6px;line-height:1.2;margin:6px 0 0}
+.legend{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.legend-item{background:#0d1b29;border:1px solid var(--stroke);border-radius:15px;padding:17px;display:flex;align-items:flex-start;gap:12px}
+.legend-item b{font-size:13px;display:block;margin:0 0 3px}.legend-item p{font-size:12px;color:#93adc0;line-height:1.5;margin:0}
+.sym{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border:1px solid currentColor;border-radius:12px;font-weight:900;font-size:19px;background:color-mix(in srgb,currentColor 9%,transparent)}
+.green{color:var(--green)}.yellow{color:var(--yellow)}.red{color:var(--red)}.blue{color:var(--blue)}.gray{color:var(--neutral)}
+.signal{margin-top:26px;padding:13px 17px;background:#0d1b29;border:1px solid var(--stroke);border-radius:11px;color:#9db5c7;font-size:12px;display:flex;align-items:center;gap:10px;min-height:51px}
+.signal.error{color:#ffacbc;border-color:#873a4a}.signal.success{color:#9ee9cf;border-color:#316654}
+.spinner{width:16px;height:16px;flex:0 0 16px;border:2px solid #29596a;border-top-color:#58e1bf;border-radius:50%;animation:spin .75s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+#settings{display:none;margin-top:14px;border:1px solid #2b495d;background:#102130;border-radius:13px;padding:17px 20px}
+#settings label{display:block;font-weight:700;font-size:12px;margin-bottom:6px}#settings input{height:45px;padding-left:13px;max-width:600px;font-size:13px}
+#settings p{color:#91adbf;font-size:12px;margin:9px 0}#settings .row{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.outline{background:#152a3b;color:#d9eeff;border:1px solid #395c75;border-radius:9px;padding:9px 13px;font-weight:750;font-size:12px}.outline:hover{background:#1b3a50}
+#report{display:none;margin-top:38px}
+.report-head{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:15px;margin-bottom:18px}.report-head h2{font-size:24px;letter-spacing:-.6px;line-height:1.35;margin:5px 0}.report-head p{margin:0;color:#88a9bd;font-size:12px}.report-head h2{overflow-wrap:anywhere}
+.report-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.notice{padding:13px 16px;border:1px solid #796237;background:#302c21;color:#f7dea0;border-radius:11px;font-size:12px;margin-bottom:15px}
+.counts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:14px}.counter{text-align:left;border:1px solid #2a4055;background:#0e1d2b;border-radius:13px;padding:16px 18px;min-width:0}.counter[aria-pressed=true]{border-color:#80c3e3;background:#152e3e}.counter:hover{border-color:#6a9db5}
+.counter strong{font:850 31px system-ui,Arial;letter-spacing:-1px;display:block;line-height:1.2}.counter small{display:block;margin-top:8px;color:#96b1c4;font-size:12px}
+.counter[data-tone=all] strong{color:#eff9ff}.counter[data-tone=green] strong{color:var(--green)}.counter[data-tone=yellow] strong{color:var(--yellow)}.counter[data-tone=red] strong{color:var(--red)}.counter[data-tone=blue] strong{color:var(--blue)}
+.brief-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;margin-bottom:26px}.brief{border:1px solid #294257;border-radius:13px;background:#0d1b29;padding:17px 19px;min-width:0}.brief .label{font:750 10px ui-monospace,monospace;letter-spacing:1px;color:#7f9fb3;text-transform:uppercase}.brief b{display:block;font-size:13px;margin-top:8px;overflow-wrap:anywhere}
+.list-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:13px}.list-head h3{font-size:21px;letter-spacing:-.5px;margin:0}.filter-group{display:flex;flex-wrap:wrap;gap:7px}
+.filter{border:1px solid #315066;background:transparent;color:#a5bdcd;border-radius:30px;padding:5px 11px;font-size:12px;font-weight:650}.filter[aria-pressed=true]{background:#1f3d51;border-color:#6babc7;color:#fff}
+.findings{display:grid;gap:11px}.finding{background:#0d1b29;border:1px solid var(--stroke);border-left:4px solid #758aa1;border-radius:13px;padding:17px 19px}.finding[data-tone=green]{border-left-color:var(--green)}.finding[data-tone=yellow]{border-left-color:var(--yellow)}.finding[data-tone=red]{border-left-color:var(--red)}.finding[data-tone=blue]{border-left-color:var(--blue)}
+.finding-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.fid{font:750 10px ui-monospace,Consolas,monospace;color:#83a5ba;letter-spacing:.6px;text-transform:uppercase}
+.severity{font:800 10px ui-monospace,monospace;border-radius:19px;border:1px solid currentColor;padding:4px 9px;letter-spacing:.6px;text-transform:uppercase}
+.finding h4{margin:10px 0 5px;font-size:16px}.finding p{font-size:13px;color:#a5bdcd;line-height:1.75;margin:0}.remediation{margin-top:11px!important;color:#dceaf2!important}.remediation b{color:#73e4c1}
+.evidence{margin-top:11px;border-top:1px dashed #31475a;padding-top:10px;font:12px/1.7 ui-monospace,Consolas,monospace;color:#8da8ba;overflow-wrap:anywhere}.law{font-size:12px;margin-top:8px;overflow-wrap:anywhere}
+.empty{padding:30px;color:#96aec0;border:1px dashed #3d5667;border-radius:12px;text-align:center}
+.disclaimer{border:1px solid #32475a;border-radius:12px;background:#101f2b;padding:16px 18px;color:#9ab1c5;font-size:12px;line-height:1.85;margin:23px 0}
+.disclaimer strong{color:#e1f1fa}.extras{display:grid;grid-template-columns:1.1fr 1fr;gap:13px;margin:31px 0 70px}.extra{border:1px solid var(--stroke);background:#0d1b28;border-radius:15px;padding:23px 24px}.extra h3{font-size:16px;margin:0 0 7px}.extra p{color:#98b1c5;font-size:13px;line-height:1.85;margin:0 0 11px}
+footer{border-top:1px solid #284055;padding:24px 0 33px;color:#7f9bae;font-size:12px}.footer-row{display:flex;flex-wrap:wrap;gap:9px;justify-content:space-between;align-items:center}
+@media(max-width:800px){.legend{grid-template-columns:repeat(2,minmax(0,1fr))}.counts{grid-template-columns:repeat(3,minmax(0,1fr))}.brief-grid{grid-template-columns:1fr 1fr}.extras{grid-template-columns:1fr}.nav-right a{display:none}h1{letter-spacing:-1.6px}}
+@media(max-width:530px){header{height:66px}.wrap{width:min(100% - 28px,1190px)}.hero{padding-top:48px}.form-row{flex-direction:column}.primary{min-height:53px}.legend{grid-template-columns:1fr}.counts{grid-template-columns:repeat(2,minmax(0,1fr))}.brief-grid{grid-template-columns:1fr}.report-head h2{font-size:20px}.nav-right{gap:8px}}
+@media print{header,.hero,.legend-section,.signal,#settings,.report-actions,.filter-group,.extras,footer{display:none!important}body{background:white;color:black}.wrap{max-width:none}#report{display:block!important}.finding,.counter,.brief,.disclaimer{background:white!important;color:black!important;break-inside:avoid}.finding p,.counter small,.brief b{color:#222!important}}
+</style>
+</head>
+<body>
+<header><nav class="wrap nav" aria-label="Điều hướng chính"><a class="brand" href="./" aria-label="ViCheck trang chủ"><span class="mark">⬡</span><span>ViCheck<small>RISK INTELLIGENCE</small></span></a><div class="nav-right"><a href="#method">Phương pháp</a><a href="https://github.com/xulytiengviet/vicheck" rel="noopener noreferrer" target="_blank">GitHub / Source ↗</a><span class="live">PASSIVE AUDIT</span></div></nav></header>
+<main>
+<section class="wrap hero">
+<p class="overline">VIETNAM WEBSITE AUDIT · SECURITY × COMPLIANCE</p>
+<h1>Một URL. <span>Bức tranh rủi ro website.</span></h1>
+<p class="subhead">Rà soát những dấu hiệu công khai về an toàn thông tin, bảo vệ dữ liệu cá nhân và tuân thủ pháp luật Việt Nam. Xem bằng chứng, mức ưu tiên và khuyến nghị khắc phục trong một bảng điều khiển.</p>
+<form id="scan-form" class="scan-panel" autocomplete="off">
+<label class="field-label" for="target">◎ TARGET / DOMAIN TO AUDIT</label>
+<div class="form-row"><div class="url-wrap"><input id="target" type="url" required placeholder="https://example.vn" aria-label="URL website cần kiểm tra" spellcheck="false" inputmode="url"></div><button class="primary" id="scan-btn" type="submit">Quét website ↗</button></div>
+<div class="smallrow"><span>⛨ Chỉ đọc trang công khai · Không đăng nhập · Không khai thác lỗ hổng</span><span><button class="btn-link" type="button" id="demo">Xem báo cáo minh họa</button> · <button class="btn-link" type="button" id="settings-toggle" aria-expanded="false" aria-controls="settings">Cấu hình API</button></span></div>
+</form>
+<div id="settings" aria-label="Cấu hình dịch vụ quét"><label for="endpoint">Địa chỉ máy chủ ViCheck API (HTTPS)</label><div class="row"><input id="endpoint" type="url" placeholder="https://vicheck-api-xxxx.onrender.com"><button id="save-endpoint" class="outline" type="button">Áp dụng</button><button id="clear-endpoint" class="outline" type="button">Xóa</button></div><p>GitHub Pages chỉ lưu giao diện tĩnh. Để tải HTML/header của website bất kỳ cần backend riêng, ví dụ Node.js trên Render. Địa chỉ API chỉ lưu trong phiên trình duyệt; URL quét và kết quả không lưu vào máy chủ ViCheck.</p><p id="endpoint-message" aria-live="polite"></p></div>
+<div class="tags"><span>HTTP RESPONSE</span><span>SECURITY HEADERS</span><span>DATA PRIVACY</span><span>E-COMMERCE</span><span>AI DISCLOSURE</span><span>VIETNAM LAW</span></div>
+</section>
+<section class="wrap legend-section" aria-labelledby="legend-title">
+<div class="section-top"><div><div class="eyebrow">THREAT CLASSIFICATION</div><h2 id="legend-title">Bốn tín hiệu rủi ro</h2></div><span class="eyebrow">EVIDENCE-DRIVEN · NO FALSE CERTIFICATION</span></div>
+<div class="legend">
+<div class="legend-item"><div class="sym green">✓</div><div><b>Đạt tiêu chí</b><p>Đã quan sát thấy tín hiệu kỹ thuật phù hợp.</p></div></div>
+<div class="legend-item"><div class="sym yellow">!</div><div><b>Cần điều chỉnh</b><p>Khuyến nghị bổ sung hoặc xác minh.</p></div></div>
+<div class="legend-item"><div class="sym red">⚑</div><div><b>Rủi ro pháp lý</b><p>Cần ưu tiên đối chiếu nghĩa vụ áp dụng.</p></div></div>
+<div class="legend-item"><div class="sym blue">⌁</div><div><b>Điểm yếu bảo mật</b><p>Dấu hiệu cấu hình an ninh cần rà soát.</p></div></div>
+</div>
+<div id="status" class="signal" role="status" aria-live="polite">◈ Sẵn sàng. Nhập URL và kết nối dịch vụ API để thực hiện kiểm tra, hoặc mở báo cáo minh họa.</div>
+</section>
+<section id="report" class="wrap" aria-label="Báo cáo audit">
+<div class="report-head"><div><div class="eyebrow">AUDIT REPORT / FINDINGS</div><h2 id="report-title">Kết quả kiểm tra</h2><p id="report-sub"></p></div><div class="report-actions"><button class="outline" type="button" id="json">↓ JSON</button><button class="outline" type="button" id="csv">↓ CSV</button><button class="outline" type="button" id="print">⎙ In PDF</button></div></div>
+<div id="demo-notice" class="notice" hidden>⚠ Đây là dữ liệu MINH HỌA, không phải kết quả quét một website có thật. Không sử dụng để kết luận về bất kỳ tên miền nào.</div>
+<div class="counts" id="counts" aria-label="Số lượng phát hiện theo màu"></div>
+<div class="brief-grid"><div class="brief"><span class="label">DOMAIN / TARGET</span><b id="info-target">—</b></div><div class="brief"><span class="label">WEBSITE CLASS</span><b id="info-class">—</b></div><div class="brief"><span class="label">CHECK / SCOPE</span><b id="info-scope">—</b></div></div>
+<div class="list-head"><h3>Danh sách phát hiện</h3><div id="filters" class="filter-group" role="group" aria-label="Lọc kết quả"></div></div>
+<div class="findings" id="findings" aria-live="polite"></div>
+<div class="disclaimer"><strong>Giới hạn đánh giá:</strong> Phần mềm chỉ kiểm tra các dấu hiệu nhìn thấy trên một trang HTML công khai và HTTP response headers. Mục xanh không đồng nghĩa website hoàn toàn an toàn hoặc tuân thủ pháp luật. Mục xanh dương không tự động chứng minh tồn tại lỗ hổng khai thác; mục đỏ là rủi ro cần xác minh, không phải kết luận vi phạm. Pháp luật cần đối chiếu hiệu lực và phạm vi áp dụng; kiểm thử xâm nhập chỉ thực hiện khi được chủ sở hữu cho phép.</div>
+</section>
+<section class="wrap extras" id="method">
+<div class="extra"><h3>◎ PHƯƠNG PHÁP / SCOPE</h3><p>Giai đoạn 1: chuẩn hóa URL, phân giải DNS công khai, tải HTML qua HTTPS/HTTP, lấy header. Giai đoạn 2: phân loại website từ dấu hiệu form, tracking, mua bán, tài khoản và AI. Giai đoạn 3: phát hành phát hiện dựa trên bằng chứng quan sát được. Không quét cổng, brute-force hay khai thác chủ động.</p><a href="https://github.com/xulytiengviet/vicheck/blob/main/references/00-triage.md" target="_blank" rel="noopener noreferrer">Bộ quy tắc phân loại site ↗</a></div>
+<div class="extra"><h3>⚖ PHÁP LUẬT / REFERENCES</h3><p>Hỗ trợ rà soát sơ bộ theo tài liệu pháp luật Việt Nam 2025–2026 của repository. Tình trạng hiệu lực, điều khoản và nghĩa vụ cụ thể phải kiểm tra lại từ nguồn chính thức, hồ sơ xử lý dữ liệu và hoạt động thực tế của website.</p><a href="https://github.com/xulytiengviet/vicheck/blob/main/sources/legal-references.md" target="_blank" rel="noopener noreferrer">Xem bảng nguồn và tình trạng kiểm chứng ↗</a></div>
+</section>
+</main>
+<footer><div class="wrap footer-row"><span>© 2026 ViCheck · Long Ngo · Website Risk Intelligence</span><span>Open source · Privacy-aware · <a href="https://github.com/xulytiengviet/vicheck">Repository</a></span></div></footer>
+<script>
+'use strict';
+(function(){
+const $=id=>document.getElementById(id);
+const tones={all:{name:'Tất cả',tag:'TẤT CẢ'},green:{name:'Đạt',tag:'ĐẠT'},yellow:{name:'Lưu ý',tag:'LƯU Ý'},red:{name:'Pháp lý',tag:'PHÁP LÝ'},blue:{name:'Bảo mật',tag:'AN NINH'},gray:{name:'Chưa xác minh',tag:'GIỚI HẠN'}};
+let report=null, active='all';
+function originForApi(){return location.hostname.endsWith('github.io') ? '' : location.origin}
+function apiBase(){return (sessionStorage.getItem('vicheck.api')||originForApi()).replace(/\/+$/,'')}
+function signal(message,kind){const el=$('status');el.className='signal'+(kind?' '+kind:'');el.textContent=message}
+function textNode(tag,value,cls){const e=document.createElement(tag);if(cls)e.className=cls;e.textContent=String(value==null?'':value);return e}
+function norm(u){try{const x=new URL(u.startsWith('http')?u:'https://'+u);if(!/^https?:$/.test(x.protocol)||x.username||x.password)throw Error();return x.href}catch{return null}}
+function findByTone(t){return (report&&report.findings||[]).filter(f=>t==='all'||f.tone===t)}
+function count(t){return findByTone(t).length}
+function setFilter(t){active=t;renderFilters();renderFindings();renderCounts()}
+function renderCounts(){const parent=$('counts');parent.replaceChildren();['all','green','yellow','red','blue'].forEach(t=>{const b=document.createElement('button');b.className='counter';b.dataset.tone=t;b.setAttribute('aria-pressed',active===t?'true':'false');b.append(textNode('strong',count(t)),textNode('small',tones[t].name));b.addEventListener('click',()=>setFilter(t));parent.append(b)})}
+function renderFilters(){const el=$('filters');el.replaceChildren();['all','red','blue','yellow','green','gray'].forEach(t=>{if(t==='gray'&&!count('gray'))return;const b=textNode('button',tones[t].name+' ('+count(t)+')','filter');b.type='button';b.setAttribute('aria-pressed',String(active===t));b.addEventListener('click',()=>setFilter(t));el.append(b)})}
+function renderFindings(){const el=$('findings');el.replaceChildren();const findings=findByTone(active);if(!findings.length){el.append(textNode('div','Không có phát hiện trong nhóm màu này.','empty'));return}
+findings.forEach(f=>{const article=document.createElement('article');article.className='finding';article.dataset.tone=tones[f.tone]?f.tone:'gray';
+const head=textNode('div','','finding-header');head.append(textNode('span',(f.id||'VC')+' · '+(f.category||'Kiểm tra'),'fid'),textNode('span',tones[f.tone]?.tag||'CHƯA RÕ','severity '+(tones[f.tone]?' '+f.tone:' gray')));article.append(head);
+article.append(textNode('h4',f.title||'Phát hiện'));
+article.append(textNode('p',f.detail||''));
+if(f.fix){const fix=textNode('p','','remediation');fix.append(textNode('b','Đề xuất → '),document.createTextNode(f.fix));article.append(fix)}
+if(f.evidence)article.append(textNode('div','Bằng chứng: '+f.evidence,'evidence'));
+if(f.law){const law=textNode('div','','law');law.append(document.createTextNode('Đối chiếu: '));if(f.law.url&&/^https:\/\//.test(f.law.url)){const a=textNode('a',f.law.name||'Tài liệu tham chiếu');a.href=f.law.url;a.target='_blank';a.rel='noopener noreferrer';law.append(a)}else law.append(document.createTextNode(f.law.name||'Chưa xác định'));article.append(law)}
+el.append(article)})}
+function render(data,isDemo){report={...data,_demo:!!isDemo};active='all';$('report').style.display='block';$('demo-notice').hidden=!isDemo;
+$('report-title').textContent=isDemo?'Mẫu báo cáo an toàn thông tin':'Báo cáo: '+(data.observed?.title||'Website được kiểm tra');
+$('report-sub').textContent=(data.checkedAt?new Date(data.checkedAt).toLocaleString('vi-VN'):'Không có mốc thời gian')+' · '+(isDemo?'Mô phỏng giao diện':'Quan sát thụ động từ HTML công khai');
+$('info-target').textContent=data.observed?.url||'—';$('info-class').textContent=data.classification||'—';$('info-scope').textContent=isDemo?'DEMO ONLY':('HTTP '+(data.observed?.status||'?')+' · 1 trang HTML');
+renderCounts();renderFilters();renderFindings();$('report').scrollIntoView({behavior:'smooth',block:'start'})}
+function demo(){
+const mk=(id,tone,category,title,detail,fix,evidence,law)=>({id,tone,category,title,detail,fix,evidence,law});
+const mock={checkedAt:new Date().toISOString(),classification:'Website có dấu hiệu thu thập nhẹ — minh họa',observed:{url:'https://example.vn/ (DEMO)',title:'Bản mô phỏng',status:200},findings:[
+mk('VC-001','green','Bảo mật','HTTPS được nhận diện','Trong ví dụ, phản hồi giả định sử dụng kết nối mã hóa.','Duy trì TLS và gia hạn chứng thư.','URL giả định bắt đầu bằng https://'),
+mk('VC-002','green','Bảo mật','X-Content-Type-Options đã bật','Ví dụ header nosniff xuất hiện.','Duy trì cấu hình.','X-Content-Type-Options: nosniff'),
+mk('VC-003','yellow','Chính sách','Cookie notice cần đánh giá','Ví dụ trang sử dụng analytics nhưng chưa có bằng chứng đồng ý hợp lệ.','Xem hành vi trước/sau khi đồng ý.','HTML giả định có mã analytics'),
+mk('VC-004','red','Dữ liệu cá nhân','Chưa thấy liên kết chính sách quyền riêng tư','Trong ví dụ, trang có biểu mẫu email nhưng chưa thấy liên kết chính sách từ trang chủ.','Rà soát nghĩa vụ thông báo và bổ sung chính sách nếu áp dụng.','Input type=email · Không thấy privacy link',{name:'Luật 91/2025/QH15 — cần xác minh áp dụng',url:'https://github.com/xulytiengviet/vicheck/blob/main/sources/legal-references.md'}),
+mk('VC-005','blue','HTTP Security','Thiếu Content-Security-Policy','Ví dụ không có CSP. Đây là cấu hình phòng vệ chưa hoàn chỉnh, không chứng minh có XSS.','Cân nhắc CSP Report-Only, sau đó triển khai CSP phù hợp.','Response header: CSP vắng mặt'),
+mk('VC-006','blue','HTTP Security','Chưa cấu hình HSTS','Ví dụ thiếu Strict-Transport-Security.','Thêm HSTS sau khi đảm bảo mọi tên miền phụ đã dùng HTTPS.','Response header: HSTS vắng mặt'),
+mk('VC-007','gray','Giới hạn','Chưa đánh giá được backend','Mô phỏng không truy cập mã nguồn hoặc hạ tầng nội bộ.','Kết hợp kiểm thử được ủy quyền.','Đây chỉ là dữ liệu mô phỏng') ]};render(mock,true);signal('Đang hiển thị DEMO. Những phát hiện bên dưới không phải kết quả quét thật.','success')}
+async function scan(){const u=norm($('target').value.trim());if(!u){signal('URL không hợp lệ. Nhập dạng https://example.vn','error');return}const base=apiBase();if(!base){$('settings').style.display='block';$('settings-toggle').setAttribute('aria-expanded','true');signal('Chưa có API quét. Hãy nhập URL backend HTTPS trong Cấu hình API hoặc xem báo cáo minh họa.','error');return}
+$('scan-btn').disabled=true;$('scan-btn').textContent='Đang kiểm tra…';signal('◌ Đang tải và phân tích HTML công khai của '+new URL(u).hostname+' …');
+try{const ctrl=new AbortController();const timeout=setTimeout(()=>ctrl.abort(),22000);
+let r;try{r=await fetch(base+'/api/audit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:u}),signal:ctrl.signal})}finally{clearTimeout(timeout)}
+let data;try{data=await r.json()}catch{throw Error('API không trả về JSON hợp lệ.')}
+if(!r.ok)throw Error(data.error||'API HTTP '+r.status);
+if(!Array.isArray(data.findings)||!data.observed)throw Error('API trả về dữ liệu sai cấu trúc.');
+render(data,false);signal('✓ Hoàn thành rà soát thụ động '+new URL(data.observed.url).hostname+' · '+data.findings.length+' kết quả.','success')
+}catch(err){signal('Không thể quét: '+(err.name==='AbortError'?'Hết thời gian chờ 22 giây.':err.message)+'. Kiểm tra backend và CORS.','error')}
+finally{$('scan-btn').disabled=false;$('scan-btn').textContent='Quét website ↗'}}
+function csvCell(x){return '"'+String(x||'').replace(/"/g,'""').replace(/^[=+\-@]/,'\u0027$&')+'"'}
+function download(filename,data,type){const blob=new Blob([data],{type});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+$('scan-form').addEventListener('submit',e=>{e.preventDefault();scan()});
+$('demo').addEventListener('click',demo);
+$('settings-toggle').addEventListener('click',()=>{const on=$('settings').style.display!=='block';$('settings').style.display=on?'block':'none';$('settings-toggle').setAttribute('aria-expanded',String(on))});
+$('save-endpoint').addEventListener('click',()=>{const val=$('endpoint').value.trim().replace(/\/+$/,'');try{const u=new URL(val);if(u.protocol!=='https:'&&!(u.protocol==='http:'&&['localhost','127.0.0.1'].includes(u.hostname)))throw Error();sessionStorage.setItem('vicheck.api',u.origin+u.pathname.replace(/\/+$/,''));$('endpoint-message').textContent='Đã lưu API cho phiên này: '+u.origin;signal('✓ Đã cấu hình API quét cho phiên trình duyệt.','success')}catch{$('endpoint-message').textContent='URL API phải dùng HTTPS (hoặc localhost khi phát triển).'}});
+$('clear-endpoint').addEventListener('click',()=>{sessionStorage.removeItem('vicheck.api');$('endpoint').value='';$('endpoint-message').textContent='Đã xóa cấu hình API trong phiên.'});
+$('json').addEventListener('click',()=>{if(report)download('vicheck-audit'+(report._demo?'-DEMO':'')+'.json',JSON.stringify(report,null,2),'application/json;charset=utf-8')});
+$('csv').addEventListener('click',()=>{if(!report)return;const head=['ID','Màu','Nhóm','Phát hiện','Mô tả','Khắc phục','Bằng chứng','Nguồn'].join(',');const lines=report.findings.map(f=>[f.id,f.tone,f.category,f.title,f.detail,f.fix,f.evidence,f.law?.name||''].map(csvCell).join(','));download('vicheck-audit'+(report._demo?'-DEMO':'')+'.csv','\uFEFF'+[head,...lines].join('\r\n'),'text/csv;charset=utf-8')});
+$('print').addEventListener('click',()=>{if(report)window.print()});
+$('endpoint').value=sessionStorage.getItem('vicheck.api')||'';
+if(apiBase())signal('✓ API đã được cấu hình. Nhập URL website để bắt đầu rà soát.','success');
+})();
+</script>
+</body>
+</html>
