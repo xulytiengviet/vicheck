@@ -19,8 +19,8 @@ const buckets = new Map();
 let active = 0;
 
 const LAW = Object.freeze({
-  privacy: { name: 'Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15; NĐ 356/2025/NĐ-CP (cần đối chiếu phạm vi áp dụng)', url: 'https://vanban.chinhphu.vn/?classid=1&docid=214590&pageid=27160&typegroup=' },
-  commerce: { name: 'Luật Thương mại điện tử 122/2025/QH15 (cần đối chiếu loại hình và nghĩa vụ)', url: 'https://vanban.chinhphu.vn/?classid=1&docid=216503&pageid=27160&typegroupid=3' },
+  privacy: { name: 'Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15; NĐ 356/2025/NĐ-CP (cần đối chiếu phạm vi áp dụng)', url: 'https://github.com/xulytiengviet/vicheck/blob/main/sources/legal-references.md' },
+  commerce: { name: 'Luật Thương mại điện tử 122/2025/QH15 (cần đối chiếu loại hình và nghĩa vụ)', url: 'https://github.com/xulytiengviet/vicheck/blob/main/sources/legal-references.md' },
   ai: { name: 'Bộ checklist minh bạch AI của dự án (cần xác minh theo trường hợp)', url: 'https://github.com/xulytiengviet/vicheck/blob/main/references/07-ai-transparency.md' }
 });
 function bad(message, code = 400) { const e = new Error(message); e.status = code; throw e; }
