@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#08121e">
+<meta name="theme-color" content="#fff2b5">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-<meta property="og:title" content="ViCheck | Website Risk Intelligence">
+<meta property="og:title" content="ViCheck | RedTeam Auditor">
 <meta property="og:description" content="Kiểm tra thụ động cấu hình bảo mật và rủi ro pháp lý website từ một URL.">
 <meta property="og:type" content="website">
-<meta name="color-scheme" content="dark">
-<meta name="description" content="ViCheck | Website Risk Intelligence: quét thụ động từ URL, rà soát rủi ro pháp lý và các tín hiệu cấu hình an toàn thông tin.">
-<title>ViCheck | Website Risk Intelligence</title>
+<meta name="color-scheme" content="light">
+<meta name="description" content="ViCheck | RedTeam Auditor: quét thụ động từ URL, rà soát rủi ro pháp lý và các tín hiệu cấu hình an toàn thông tin.">
+<title>ViCheck | RedTeam Auditor</title>
 <style>
 :root{--bg:#060e19;--surface:#0d1a28;--surface2:#102133;--stroke:#24384c;--text:#eaf5fe;--dim:#9cb6ca;--muted:#728da5;--green:#4be0aa;--yellow:#f6c863;--red:#ff7687;--blue:#64b9ff;--neutral:#9aabbc;color-scheme:dark}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse 85% 560px at 48% -210px,#10404c 0%,transparent 90%),var(--bg);color:var(--text);font:14px/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}body:before{content:"";position:fixed;pointer-events:none;inset:0;z-index:-1;background-image:linear-gradient(#4b6b7910 1px,transparent 1px),linear-gradient(90deg,#4b6b7910 1px,transparent 1px);background-size:43px 43px}
@@ -67,16 +67,200 @@ input:focus{border-color:#79bdec!important;box-shadow:0 0 0 3px #347db837}input:
 footer{border-top:1px solid #284055;padding:24px 0 33px;color:#7f9bae;font-size:12px}.footer-row{display:flex;flex-wrap:wrap;gap:9px;justify-content:space-between;align-items:center}
 @media(max-width:800px){.legend{grid-template-columns:repeat(2,minmax(0,1fr))}.counts{grid-template-columns:repeat(3,minmax(0,1fr))}.brief-grid{grid-template-columns:1fr 1fr}.extras{grid-template-columns:1fr}.nav-right a{display:none}h1{letter-spacing:-1.6px}}
 @media(max-width:530px){header{height:66px}.wrap{width:min(100% - 28px,1190px)}.hero{padding-top:48px}.form-row{flex-direction:column}.primary{min-height:53px}.legend{grid-template-columns:1fr}.counts{grid-template-columns:repeat(2,minmax(0,1fr))}.brief-grid{grid-template-columns:1fr}.report-head h2{font-size:20px}.nav-right{gap:8px}}
+
+/* ViCheck RedTeam Auditor · light amber/red theme 2026-11 */
+:root{
+  --bg:#fff2b5;--surface:#fff7d9;--surface2:#ffe5a2;--stroke:#d56a56;
+  --text:#74131b;--dim:#89383b;--muted:#9b5351;
+  --green:#157547;--yellow:#965600;--red:#b21421;--blue:#1264ad;--neutral:#835452;
+  --redteam:#a50d1a;--redteam-dark:#71111b;--redteam-soft:#ffdeb2;
+  color-scheme:light;
+}
+html{color-scheme:light}
+body{
+  background:
+    radial-gradient(ellipse 74% 540px at 50% -160px,#ffda73 0%,transparent 85%),
+    linear-gradient(180deg,#fff6cc 0%,#ffedab 62%,#fff3c2 100%);
+  color:var(--text);
+}
+body:before{
+  background-image:linear-gradient(#b21c2617 1px,transparent 1px),
+                   linear-gradient(90deg,#b21c2617 1px,transparent 1px);
+  background-size:44px 44px;
+}
+::selection{background:#c62032;color:#fff9e7}
+a{color:#981522}
+a:hover{color:#c3182b}
+:focus-visible{outline-color:var(--red)!important}
+header{
+  background:#fff0afea;
+  border-bottom:2px solid #a91420;
+  box-shadow:0 4px 0 #d94d3820;
+}
+.brand{color:#7c0f1b;font-weight:900}
+.brand .mark{
+  background:#ffe09c;color:var(--redteam);border:2px solid #a50d1a;
+  border-radius:10px;box-shadow:4px 4px 0 #bd2a2633;
+}
+.brand small{color:#a9252a;font-weight:850}
+.nav-right a{color:#862631;font-weight:750}
+.nav-right a:hover{color:#b11020}
+.live{
+  color:#a50c1b;border:1px solid #b91a29;
+  background:#ffe3aa;box-shadow:inset 0 0 0 1px #fff9df;
+}
+.live:before{background:#b3121f;box-shadow:0 0 0 3px #e0a09f}
+.overline,.eyebrow,.field-label{color:#aa1423;font-weight:850}
+.hero{padding-top:75px}
+.hero:after{
+  content:"AUTHORIZED · PASSIVE · EVIDENCE-DRIVEN";
+  display:block;margin-top:19px;color:#8e272d;
+  font:700 10px ui-monospace,Consolas,monospace;letter-spacing:1.4px;
+}
+h1{color:#71101b;font-weight:900}
+h1 span{
+  background:linear-gradient(105deg,#d31b2e 0%,#9c1021 65%,#7b0e19 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.subhead{color:#883f40}
+.scan-panel{
+  background:linear-gradient(130deg,#fff4bf 0%,#ffe39a 100%);
+  border:2px solid #b7282c;border-radius:15px;
+  box-shadow:8px 8px 0 #bd332827,0 0 0 5px #fff5d585;
+}
+.field-label{letter-spacing:1.6px}
+.url-wrap:before{color:#b11a26}
+input[type=url],input[type=text]{
+  background:#fffbed;border:1.5px solid #c35147;
+  border-radius:9px;color:#6e151a;
+}
+input:focus{border-color:#a70d19!important;box-shadow:0 0 0 3px #ba273433}
+input::placeholder{color:#a16a65}
+.primary{
+  background:linear-gradient(125deg,#cc1829,#971020);
+  color:#fff9e5;border:2px solid #931222;border-radius:9px;
+  box-shadow:4px 4px 0 #7f152137;
+  font-weight:900;letter-spacing:.1px;
+}
+.primary:hover:not(:disabled){filter:brightness(1.08)}
+.smallrow{color:#874849}
+.btn-link{color:#a30e20;font-weight:750}
+.tags span{
+  color:#8b212b;border:1px solid #c4584f;
+  background:#fff1ba;font-weight:750;
+}
+.section-top h2,.list-head h3,.report-head h2{
+  color:#76101a;
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  font-weight:900;
+}
+.legend-item{
+  background:#fff7d4;border:1px solid #d16e59;
+  border-radius:12px;box-shadow:3px 3px 0 #be4f4430;
+}
+.legend-item b{color:#7e1720}
+.legend-item p{color:#925052}
+.sym{border-width:2px;border-radius:9px;background:#fff3ce}
+.sym.green{color:var(--green)}
+.sym.yellow{color:var(--yellow)}
+.sym.red{color:var(--red)}
+.sym.blue{color:var(--blue)}
+.signal{
+  background:#fff5cf;border:1px solid #d16d55;border-radius:10px;color:#844044;
+}
+.signal.error{background:#ffe0cc;color:#981220;border-color:#bc3441}
+.signal.success{background:#edfad7;color:#166137;border-color:#4a9c68}
+.spinner{border-color:#e3a6a2;border-top-color:#aa1825}
+#settings{
+  background:#fff4c5;border:1px solid #c95549;border-radius:12px;
+}
+#settings p,#endpoint-message{color:#89504a}
+.outline{
+  background:#ffe4ab;color:#921925;
+  border:1.5px solid #b63c3c;border-radius:8px;
+  box-shadow:2px 2px 0 #bd31301d;
+}
+.outline:hover{background:#ffd68a}
+.report-head p{color:#944b46}
+.notice{background:#fff0bd;border-color:#b97a28;color:#6b3a06}
+.counter{
+  background:#fff6d3;border:1px solid #d86a58;
+  border-radius:12px;box-shadow:3px 3px 0 #ad3e2a21;
+}
+.counter:hover{border-color:#aa202c}
+.counter[aria-pressed=true]{
+  background:#ffe3a5;border:2px solid #9b1625;
+  padding:15px 17px;box-shadow:4px 4px 0 #c92c3140;
+}
+.counter small{color:#8a4744}
+.counter[data-tone=all] strong{color:#7d1722}
+.counter[data-tone=green] strong{color:var(--green)}
+.counter[data-tone=yellow] strong{color:var(--yellow)}
+.counter[data-tone=red] strong{color:var(--red)}
+.counter[data-tone=blue] strong{color:var(--blue)}
+.brief{
+  border:1px solid #cb6252;background:#fff6d3;
+  border-radius:12px;
+}
+.brief .label{color:#9d3437}
+.brief b{color:#711922}
+.filter{
+  background:#fff1c8;border:1px solid #cb6959;
+  color:#8b2930;font-weight:750;
+}
+.filter:hover{background:#ffe0a0}
+.filter[aria-pressed=true]{
+  background:#ac1827;border-color:#95121e;color:#fff8e0;
+}
+.finding{
+  background:#fff8dc;border:1px solid #d47464;
+  border-left:5px solid #9c3b3f;border-radius:11px;
+  box-shadow:3px 3px 0 #d76a5224;
+}
+.finding[data-tone=green]{border-left-color:var(--green)}
+.finding[data-tone=yellow]{border-left-color:var(--yellow)}
+.finding[data-tone=red]{border-left-color:var(--red)}
+.finding[data-tone=blue]{border-left-color:var(--blue)}
+.fid{color:#a73737}
+.severity{border-radius:7px;background:#fff4d0;font-weight:900}
+.severity.green{color:var(--green)}
+.severity.yellow{color:var(--yellow)}
+.severity.red{color:var(--red)}
+.severity.blue{color:var(--blue)}
+.finding h4{color:#74131b}
+.finding p{color:#874348}
+.remediation{color:#782d35!important}
+.remediation b{color:#a91422}
+.evidence{color:#8c4545;border-top:1px dashed #ce7970}
+.law{color:#79383b}
+.empty{border-color:#d16f5c;color:#8b4c4d;background:#fff4d5}
+.disclaimer{
+  background:#fff0c0;border:1px solid #c76554;
+  color:#8d4342;
+}
+.disclaimer strong{color:#79131b}
+.extra{
+  background:#fff6d5;border:1px solid #cc6554;
+  border-radius:12px;box-shadow:3px 3px 0 #c54b4520;
+}
+.extra h3{color:#771721}
+.extra p{color:#8b4847}
+footer{border-top:2px solid #c13b36;color:#8d4b47;background:#ffefb856}
+@media(max-width:530px){
+  .scan-panel{box-shadow:4px 4px 0 #bd332827}
+  .hero:after{font-size:9px}
+}
+
 @media print{header,.hero,.legend-section,.signal,#settings,.report-actions,.filter-group,.extras,footer{display:none!important}body{background:white;color:black}.wrap{max-width:none}#report{display:block!important}.finding,.counter,.brief,.disclaimer{background:white!important;color:black!important;break-inside:avoid}.finding p,.counter small,.brief b{color:#222!important}}
 </style>
 </head>
 <body>
-<header><nav class="wrap nav" aria-label="Điều hướng chính"><a class="brand" href="./" aria-label="ViCheck trang chủ"><span class="mark">⬡</span><span>ViCheck<small>RISK INTELLIGENCE</small></span></a><div class="nav-right"><a href="#method">Phương pháp</a><a href="https://github.com/xulytiengviet/vicheck" rel="noopener noreferrer" target="_blank">GitHub / Source ↗</a><span class="live">PASSIVE AUDIT</span></div></nav></header>
+<header><nav class="wrap nav" aria-label="Điều hướng chính"><a class="brand" href="./" aria-label="ViCheck trang chủ"><span class="mark">⬡</span><span>ViCheck<small>REDTEAM AUDITOR</small></span></a><div class="nav-right"><a href="#method">Phương pháp</a><a href="https://github.com/xulytiengviet/vicheck" rel="noopener noreferrer" target="_blank">GitHub / Source ↗</a><span class="live">REDTEAM / PASSIVE</span></div></nav></header>
 <main>
 <section class="wrap hero">
-<p class="overline">VIETNAM WEBSITE AUDIT · SECURITY × COMPLIANCE</p>
-<h1>Một URL. <span>Bức tranh rủi ro website.</span></h1>
-<p class="subhead">Rà soát những dấu hiệu công khai về an toàn thông tin, bảo vệ dữ liệu cá nhân và tuân thủ pháp luật Việt Nam. Xem bằng chứng, mức ưu tiên và khuyến nghị khắc phục trong một bảng điều khiển.</p>
+<p class="overline">VIETNAM REDTEAM AUDITOR · SECURITY × COMPLIANCE</p>
+<h1>Một URL. <span>Toàn cảnh rủi ro bảo mật.</span></h1>
+<p class="subhead">Kiểm toán thụ động theo phong cách Red Team: rà soát tín hiệu an toàn thông tin, bảo vệ dữ liệu cá nhân và tuân thủ pháp luật Việt Nam. Xem bằng chứng, mức ưu tiên và khuyến nghị khắc phục trong một bảng điều khiển.</p>
 <form id="scan-form" class="scan-panel" autocomplete="off">
 <label class="field-label" for="target">◎ TARGET / DOMAIN TO AUDIT</label>
 <div class="form-row"><div class="url-wrap"><input id="target" type="text" required placeholder="https://example.vn" aria-label="URL website cần kiểm tra" spellcheck="false" inputmode="url"></div><button class="primary" id="scan-btn" type="submit">Quét website ↗</button></div>
